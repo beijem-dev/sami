@@ -12,7 +12,7 @@
 /* Background */
 body {
   font-family: 'Arial', sans-serif;
-  background: #0d0d0d;
+  background: #000000;
   overflow: hidden;
   min-height: 100vh;
   display: flex;
@@ -24,19 +24,6 @@ body {
   perspective: 1000px;
   position: relative;
 }
-
-/* Stars */
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.8;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff;
-  animation: twinkle 2s infinite alternate;
-}
-@keyframes twinkle { from {opacity:0.2} to {opacity:1} }
 
 /* Profile Picture */
 .profile-pic {
@@ -96,99 +83,61 @@ body {
 /* Badges */
 .badge {
   background: transparent;
-  color: #fff;
-  font-size: 0.7em;
-  padding: 2px 6px;
-  border-radius: 8px;
   position: absolute;
   top: -10px;
   right: -10px;
-  border: 1px solid #fff;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+}
+.badge img {
+  width: 20px;
+  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #fff);
 }
 
-/* Music control */
-#audioControl {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  border: 2px solid #fff;
-  padding: 10px;
+/* Stars effect */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
   border-radius: 50%;
-  color: white;
-  font-size: 1.2em;
-  cursor: pointer;
-  z-index: 2;
+  opacity: 0.8;
   box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+  animation: twinkle 2s infinite alternate;
 }
+@keyframes twinkle { from {opacity:0.2} to {opacity:1} }
 </style>
 </head>
 <body>
 
-<!-- Stars container -->
-<div id="stars"></div>
-
 <!-- Profile -->
-<img class="profile-pic" src="https://via.placeholder.com/120" alt="Profile Picture">
+<img class="profile-pic" src="https://cdn.discordapp.com/attachments/1446875298468728875/1461176613440983132/IMG_3923.jpg?ex=69699a43&is=696848c3&hm=ad8c702727258f068609ad1ef1f8ec4fd66b4ca04a8235bce92d63ac771b296f&" alt="Profile Picture">
 
 <!-- Description -->
 <div class="description">
-  Welcome! Check my links below.
+  Your description goes here. You can say something about yourself!
 </div>
 
 <!-- Links -->
 <div class="links">
-  <a class="link-button" href="https://instagram.com/yourname" target="_blank">
+  <a class="link-button" href="#" target="_blank">
     <i class="fab fa-instagram"></i>
-    <span class="badge">IG</span>
+    <span class="badge">
+      <img src="https://cdn.discordapp.com/emojis/1324860526718881876.png" alt="Badge">
+    </span>
   </a>
-  <a class="link-button" href="https://youtube.com/channel/xyz" target="_blank">
+  <a class="link-button" href="#" target="_blank">
     <i class="fab fa-youtube"></i>
-    <span class="badge">YT</span>
   </a>
-  <a class="link-button" href="https://discord.gg/abcd" target="_blank">
+  <a class="link-button" href="#" target="_blank">
     <i class="fab fa-discord"></i>
-    <span class="badge">DS</span>
-  </a>
-  <a class="link-button" href="https://twitter.com/yourname" target="_blank">
-    <i class="fab fa-twitter"></i>
-    <span class="badge">TW</span>
   </a>
 </div>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop autoplay>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-<button id="audioControl"><i class="fa fa-pause"></i></button>
-
 <script>
-// Stars effect
-const stars = [];
-for(let i=0;i<100;i++){
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = Math.random() * window.innerWidth + 'px';
-  star.style.top = Math.random() * window.innerHeight + 'px';
-  star.style.width = star.style.height = Math.random()*2+1 + 'px';
-  document.body.appendChild(star);
-  stars.push(star);
-}
-
 // Cursor movement effect
 document.addEventListener('mousemove', e => {
   const x = (e.clientX / window.innerWidth - 0.5) * 20;
   const y = (e.clientY / window.innerHeight - 0.5) * 20;
   document.body.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
-});
-
-// Music control
-const music = document.getElementById('bgMusic');
-const btn = document.getElementById('audioControl');
-btn.addEventListener('click',()=>{
-  if(music.paused){ music.play(); btn.innerHTML='<i class="fa fa-pause"></i>'; }
-  else { music.pause(); btn.innerHTML='<i class="fa fa-play"></i>'; }
 });
 </script>
 </body>
